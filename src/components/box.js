@@ -1,33 +1,29 @@
+import { number } from "prop-types"
 import React, {useState} from "react"
 
 
-const Box = ({box, content}) =>  {
+const Box = ({boxNumber, content}) =>  {
 
     const [open, setOpen] = useState(false)
+    const [locked, setLocked] = useState(true)
 
 
     return (
-        <div style={{}} onClick={() => setOpen(!open)}>
-            {box}
-            { 
-                open && <div>{content}</div>
-            }
-
+        <div>
+        {
+            locked && <div style={{}} onClick={() =>
+                setLocked(false)}> {boxNumber} </div>
+        }
+        {
+            !locked && <div style={{}} onClick={() => setOpen(!open)}>preview</div>
+        }
+        {
+            !locked && open && <div style={{}}>full msg</div>
+        }
             
         </div>
+          
     )
-    // a div with a white 40% opacity background
-    // displaying a minature of the message or just 'click me'
-    // before element to have a transparent background
-    // div content to collapse before clicked
-    // after clicking expand and hide the before content with the box number
-
-    // for BLANK boxes we will block the message somehow
-
-
-    // ::before <--- content '1' <--- move in before clicked, move out of the way after clicking
-
-
 }
 
 export default Box

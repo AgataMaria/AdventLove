@@ -1,4 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway+Dots&display=swap");
+
+#tsparticles {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: -1;
+}
+
 .calendar {
+    width: 60%;
+    height: 90vh;
+    margin: 5vh auto;
+    box-shadow: 1px 2px 1px 1px rgba(2, 0, 35, 0.8),
+      -1px -2px 0px 1px rgba(2, 0, 35, 0.8),;
+    background: transparent;
+}
+
+.header {
+    font-family: "Raleway Dots";
+    color: white;
+    text-shadow: #ffeb00 1px 0 10px;
+}
+
+.calendar-boxes {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
+    color: white;
 }
