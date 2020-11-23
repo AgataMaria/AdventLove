@@ -1,29 +1,79 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway+Dots&display=swap");
 
+:root {
+    --dark-blue: rgb(14, 23, 39); 
+    --sure-blue: rgb(10, 39, 73);
+    --pastel-blue: rgb(30, 57, 87);
+    --sure-gold: rgb(204, 162, 47);
+    --pastel-gold: rgb(202, 164, 93);
+    --beige-grey: rgb(205, 205, 195);
+    --very-yellow: rgb(255, 235, 0);
+}
+
 #tsparticles {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     position: fixed;
     z-index: -1;
+    top: 0;
+    left: 0;
 }
 
 .calendar {
     width: 60%;
     height: 90vh;
     margin: 5vh auto;
-    box-shadow: 1px 2px 1px 1px rgba(2, 0, 35, 0.8),
-      -1px -2px 0px 1px rgba(2, 0, 35, 0.8),;
-    background: transparent;
+    box-shadow: 1px 2px 5px 1px rgba(255,235,0,.6),
+      -1px -2px 5px 1px rgba(219, 219, 217, 0.6);
+    background: rgb(14, 23, 39, .6);
+    border-top: 5px solid var(--pastel-gold);
+    border-right: 5px solid var(--sure-gold);
+    border-bottom: 5px solid var(--beige-grey);
+    border-left: 5px solid var(--pastel-blue);
+    display: flex;
+    flex-direction: column;
+    align-content: center;
 }
 
 .header {
     font-family: "Raleway Dots";
     color: white;
     text-shadow: #ffeb00 1px 0 10px;
+    transform: rotate(-3deg);
+    padding: 1rem;
 }
 
 .calendar-boxes {
+    flex-grow: 1;
+    max-width: 100%;
+    height: 60%;;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
+    gap: 3px;
+    justify-items: center;
+    align-items: center;
     color: white;
+    padding: 0.3rem 1rem;
+}
+
+.calendar-boxes div {
+    width: 5vw;
+    height: 5vw;
+}
+
+
+.box--locked {
+    border-top: 2px dotted var(--beige-grey);
+    border-right: 2px dotted var(--beige-grey);
+    border-bottom: 2px dotted var(--beige-grey);
+}
+
+.box--unlocked {
+    background-color: rgba(205, 205, 195, .8);
+    border-radius: 0.1rem;
+    font-size: xx-small;
+}
+
+.box--open-full {
+    border: 3px solid yellow;
 }

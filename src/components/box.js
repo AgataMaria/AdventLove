@@ -2,7 +2,7 @@ import { number } from "prop-types"
 import React, {useState} from "react"
 
 
-const Box = ({boxNumber, content}) =>  {
+const Box = ({boxNumber, contentPreview, contentFull}) =>  {
 
     const [open, setOpen] = useState(false)
     const [locked, setLocked] = useState(true)
@@ -11,14 +11,14 @@ const Box = ({boxNumber, content}) =>  {
     return (
         <div>
         {
-            locked && <div style={{}} onClick={() =>
+            locked && <div className="box--locked" style={{}} onClick={() =>
                 setLocked(false)}> {boxNumber} </div>
         }
         {
-            !locked && <div style={{}} onClick={() => setOpen(!open)}>preview</div>
+            !locked && <div className="box--unlocked" style={{}} onClick={() => setOpen(!open)}>{contentPreview}</div>
         }
         {
-            !locked && open && <div style={{}}>full msg</div>
+            !locked && open && <div className="box--open-full" style={{}}>{contentFull}</div>
         }
             
         </div>
