@@ -10,17 +10,17 @@ const Box = ({boxNumber, content}) =>  {
     let styleRule
 
     switch(boxNumber) {
-        case '4':
+        case '10':
             styleRule = "double-row"
             break
         default:
-            styleRule = "test"
+            styleRule = ""
             break
     }
 
 
     return (
-        <div>
+        <div className={styleRule}>
         {
             locked && <div className="box--locked" style={{}} onClick={() =>
                 setLocked(false)}> {content.day} - box {boxNumber} </div>

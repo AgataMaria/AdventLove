@@ -51,7 +51,6 @@
     height: 60%;;
     display: grid;
     grid-template-columns: repeat(6, 5vw);
-    /* grid-template-rows: 5, 5vw; */
     gap: 3px;
     justify-items: center;
     align-items: center;
@@ -82,7 +81,8 @@
 }
 
 .double-row {
-    grid-row: 1/2;
+    grid-column: span 1;
+    grid-row: span 2;
 }
 
 .double-column {
