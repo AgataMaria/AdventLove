@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component, useState } from "react"
 import "./calendar.css"
 import Calendar from "./calendar"
 import Particles from "react-particles-js"
@@ -7,10 +7,17 @@ import PARTICLES_CONFIG from "./particles-config"
 class Container extends Component {
   constructor(props) {
     super(props)
-    this.state = true
+    this.state = {
+      
+    }
   }
 
+
+
   render() {
+    // really need to move this somewhere
+    // and thing of storing state (locked / unlocked boxes)
+
     const BOXES = {
       1: {
         day: "13",

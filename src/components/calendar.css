@@ -50,6 +50,7 @@ main {
 }
 
 .header > h1 {
+    /* want to transform so that it glows */
     font-family: 'Raleway Dots', cursive;
     color: white;
     font-size: 7vh;
@@ -72,6 +73,7 @@ main {
     overflow: hidden;
 }
 
+/* Standard boxes styling */
 .box--standard div {
     height: clamp(var(--box-size-unit), var(--box-size-unit), calc(2 * (var(--box-size-unit) + 3px)));
     width: clamp(var(--box-size-unit), var(--box-size-unit), calc(2 * (var(--box-size-unit) + 3px)));
@@ -85,6 +87,27 @@ main {
     background-color: rgb(208,216,226);
     opacity: .8;
     padding: .3rem;
+}
+
+.box--unlocked {
+    background-color: rgba(205, 205, 195, .8);
+    border-radius: 0.1rem;
+    font-size: xx-small;
+}
+
+.box--open-full {
+    border: 3px solid yellow;
+}
+
+/* Sizing & styling for double-boxes */
+.double-row {
+    grid-column: span 1;
+    grid-row: span 2;
+}
+
+.double-column {
+    grid-column: span 2;
+    grid-row: span 1;
 }
 
 .double-row > div {
@@ -105,6 +128,8 @@ main {
     border-right: 5px solid rgb(238,232,152);
     background-color: rgb(249,247,218);
 }
+
+/* Blocked boxes styling */
 
 /* .heart {
     width: calc(2 * var(--box-size-unit) + 3px);
@@ -133,22 +158,3 @@ main {
     background-color: #f9f7da;
 } */
 
-.box--unlocked {
-    background-color: rgba(205, 205, 195, .8);
-    border-radius: 0.1rem;
-    font-size: xx-small;
-}
-
-.box--open-full {
-    border: 3px solid yellow;
-}
-
-.double-row {
-    grid-column: span 1;
-    grid-row: span 2;
-}
-
-.double-column {
-    grid-column: span 2;
-    grid-row: span 1;
-}
