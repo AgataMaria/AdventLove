@@ -1,4 +1,3 @@
-import { number } from "prop-types"
 import React, {useState} from "react"
 
 
@@ -7,14 +6,21 @@ const Box = ({boxNumber, content}) =>  {
     const [open, setOpen] = useState(false)
     const [locked, setLocked] = useState(true)
 
+    switch(content.isBlocked) {
+        // prevent onclick
+    }
+
     let styleRule
 
     switch(boxNumber) {
         case '10':
             styleRule = "double-row"
             break
+        case '28':
+            styleRule = "double-column"
+            break
         default:
-            styleRule = ""
+            styleRule = "box--standard"
             break
     }
 
@@ -23,7 +29,7 @@ const Box = ({boxNumber, content}) =>  {
         <div className={styleRule}>
         {
             locked && <div className="box--locked" style={{}} onClick={() =>
-                setLocked(false)}> {content.day} - box {boxNumber} </div>
+                setLocked(false)}> {content.day}</div>
         }
         {
             !locked && <div className="box--unlocked" style={{}} onClick={() => setOpen(!open)}>{content.contentPreview}</div>

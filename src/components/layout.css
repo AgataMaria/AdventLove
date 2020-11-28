@@ -1,3 +1,13 @@
+/* Custom styles */
+footer {
+  width: auto;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 1rem;
+  color: white;
+}
+/* Gatsby presets */
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;

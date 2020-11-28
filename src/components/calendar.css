@@ -8,6 +8,14 @@
     --pastel-gold: rgb(202, 164, 93);
     --beige-grey: rgb(205, 205, 195);
     --very-yellow: rgb(255, 235, 0);
+    --box-size-unit: 5vw;
+}
+
+main {
+    height: 90vh;
+    display: flex;
+    align-content: center;
+    justify-content: center;
 }
 
 #tsparticles {
@@ -19,13 +27,13 @@
     left: 0;
 }
 
-.calendar {
-    width: 60%;
-    height: 90vh;
-    margin: 5vh auto;
+.calendar__container {
+    width: clamp(35vw, 35vw, 50vw);
+    height: clamp(49vw, 49vw, 65vw);
+    margin: 3vw auto;
     box-shadow: 1px 2px 5px 1px rgba(255,235,0,.6),
       -1px -2px 5px 1px rgba(219, 219, 217, 0.6);
-    background: rgb(14, 23, 39, .6);
+    background: rgba(30, 57, 87, .6);
     border-top: 5px solid var(--pastel-gold);
     border-right: 5px solid var(--sure-gold);
     border-bottom: 5px solid var(--beige-grey);
@@ -33,42 +41,97 @@
     display: flex;
     flex-direction: column;
     align-content: center;
-    justify-content: space-between
 }
 
 .header {
-    font-family: 'Raleway Dots', cursive;
-    color: white;
-    text-shadow: #ffeb00 1px 0 10px;
     transform: rotate(-3deg);
     padding: 1rem;
-    font-size: 5rem;
+    margin: 1rem auto;
 }
 
-.calendar-boxes {
-    flex-grow: 1;
-    max-width: 100%;
-    height: 60%;;
-    display: grid;
-    grid-template-columns: repeat(6, 5vw);
-    gap: 3px;
-    justify-items: center;
-    align-items: center;
+.header > h1 {
+    font-family: 'Raleway Dots', cursive;
     color: white;
-    padding: 0.3rem 1rem;
+    font-size: 7vh;
+    text-shadow: #ffeb00 1px 0 10px;
+    display: inline-block;
 }
 
-.calendar-boxes div {
-    width: 5vw;
-    height: 5vw;
+.calendar__boxes {
+    width: clamp(30vw, 35vw, 40vw);
+    height: clamp(30vw, 35vw, 40vw);
+    align-self: flex-end;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(6, var(--box-size-unit));
+    grid-template-rows: repeat(5, var(--box-size-unit));
+    gap: 3px;
+    align-content: end;
+    justify-content: center;
+    padding: .3rem;
+    overflow: hidden;
 }
 
+.box--standard div {
+    height: clamp(var(--box-size-unit), var(--box-size-unit), calc(2 * (var(--box-size-unit) + 3px)));
+    width: clamp(var(--box-size-unit), var(--box-size-unit), calc(2 * (var(--box-size-unit) + 3px)));
+}
 
 .box--locked {
-    border-top: 2px dotted var(--beige-grey);
-    border-right: 2px dotted var(--beige-grey);
-    border-bottom: 2px dotted var(--beige-grey);
+    border-top: 5px solid rgb(224,229,236);
+    border-left: 5px solid rgb(192,203,217);
+    border-bottom: 5px solid rgb(128,151,178);  
+    border-right: 5px solid rgb(160,177,197);
+    background-color: rgb(208,216,226);
+    opacity: .8;
+    padding: .3rem;
 }
+
+.double-row > div {
+    height: calc(2 * var(--box-size-unit) + 3px);
+    border-top: 5px solid rgb(173,205,193);
+    border-left: 5px solid rgb(141,186,169);
+    border-bottom: 5px solid rgb(85,140,119);  
+    border-right: 5px solid rgb(109,166,145);
+    background-color: rgb(157,195,181);
+}
+
+.double-column > div  {
+    width: calc(2 * var(--box-size-unit) + 3px);
+    height: var(--box-size-unit);
+    border-top: 5px solid rgb(253,252,240);
+    border-left: 5px solid rgb(246,242,196);
+    border-bottom: 5px solid rgb(231,222,108);  
+    border-right: 5px solid rgb(238,232,152);
+    background-color: rgb(249,247,218);
+}
+
+/* .heart {
+    width: calc(2 * var(--box-size-unit) + 3px);
+    border-top: 5px solid rgb(253,252,240);
+    border-left: 5px solid rgb(246,242,196);
+    border-bottom: 5px solid rgb(231,222,108);  
+    border-right: 5px solid rgb(238,232,152);
+    background-color: rgb(249,247,218);
+}
+
+.gift {
+    width: calc(2 * var(--box-size-unit) + 3px);
+    border-top: 5px solid rgb(253,252,240);
+    border-left: 5px solid rgb(246,242,196);
+    border-bottom: 5px solid rgb(231,222,108);  
+    border-right: 5px solid rgb(238,232,152);
+    background-color: rgb(249,247,218);
+}
+
+.snowman {
+    width: calc(2 * var(--box-size-unit) + 3px);
+    border-top: 5px solid rgb(253,252,240);
+    border-left: 5px solid rgb(246,242,196);
+    border-bottom: 5px solid rgb(231,222,108);  
+    border-right: 5px solid rgb(238,232,152);
+    background-color: #f9f7da;
+} */
 
 .box--unlocked {
     background-color: rgba(205, 205, 195, .8);
@@ -86,6 +149,6 @@
 }
 
 .double-column {
-    grid-column: 5/-1;
-    grid-row: 5;
+    grid-column: span 2;
+    grid-row: span 1;
 }
