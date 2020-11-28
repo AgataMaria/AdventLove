@@ -1,20 +1,13 @@
-import React, { Component, useState } from "react"
+import React, { Component, useState, Fragment } from "react"
+import parse from 'html-react-parser';
 import "./calendar.css"
 import Calendar from "./calendar"
 import Particles from "react-particles-js"
 import PARTICLES_CONFIG from "./particles-config"
+import Ast from "../images/gatsby-astronaut.png"
 
-class Container extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      
-    }
-  }
+function Container() {
 
-
-
-  render() {
     // really need to move this somewhere
     // and thing of storing state (locked / unlocked boxes)
 
@@ -25,10 +18,10 @@ class Container extends Component {
         contentFull: "full msg",
         isBlocked: false,
       },
-      2: { day: "20", contentPreview: "", contentFull: "", isBlocked: false },
-      3: { day: "15", contentPreview: "", contentFull: "", isBlocked: false },
+      2: { day: "20", contentPreview: "click me", contentFull: parse(`<img src="${Ast}"/>`), isBlocked: false },
+      3: { day: "15", contentPreview: "click me", contentFull: parse('<div style="width: 500px; height: 200px; margin: 0 auto; background: red"></div>'), isBlocked: false },
       4: { day: "6", contentPreview: "", contentFull: "", isBlocked: false },
-      5: { day: "⛄", contentPreview: "", contentFull: "", isBlocked: true },
+      5: { day: "⛄", isBlocked: true },
       6: { day: "22", contentPreview: "", contentFull: "", isBlocked: false },
       7: { day: "1", contentPreview: "", contentFull: "", isBlocked: false },
       8: { day: "7", contentPreview: "", contentFull: "", isBlocked: false },
@@ -36,7 +29,7 @@ class Container extends Component {
       10: { day: "24", contentPreview: "", contentFull: "", isBlocked: false },
       11: { day: "2", contentPreview: "", contentFull: "", isBlocked: false },
       12: { day: "16", contentPreview: "", contentFull: "", isBlocked: false },
-      13: { day: "🎁", contentPreview: "", contentFull: "", isBlocked: false },
+      13: { day: "🎁", isBlocked: false },
       14: { day: "14", contentPreview: "", contentFull: "", isBlocked: false },
       15: { day: "10", contentPreview: "", contentFull: "", isBlocked: false },
       16: { day: "11", contentPreview: "", contentFull: "", isBlocked: false },
@@ -48,7 +41,7 @@ class Container extends Component {
       22: { day: "21", contentPreview: "", contentFull: "", isBlocked: false },
       23: { day: "23", contentPreview: "", contentFull: "", isBlocked: false },
       24: { day: "9", contentPreview: "", contentFull: "", isBlocked: false },
-      25: { day: "🤍", contentPreview: "", contentFull: "", isBlocked: true },
+      25: { day: "🤍", isBlocked: true },
       26: { day: "4", contentPreview: "", contentFull: "", isBlocked: false },
       27: { day: "17", contentPreview: "", contentFull: "", isBlocked: false },
       28: { day: "25", contentPreview: "", contentFull: "", isBlocked: false },
@@ -66,9 +59,15 @@ class Container extends Component {
       </>
     )
   }
-}
+
 
 export default Container
+
+
+
+
+
+
 
 // class app
 // calendar component - pass this.BOXES as prop

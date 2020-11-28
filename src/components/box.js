@@ -1,46 +1,58 @@
-import React, {useState} from "react"
+import React, { useState } from "react"
+import parse from 'html-react-parser';
+import ReactModal from "react-modal"
+import "./calendar"
 
+const Box = ({ boxNumber, content }) => {
+  const [open, setOpen] = useState(false)
+  const [locked, setLocked] = useState(true)
 
-const Box = ({boxNumber, content}) =>  {
+  let styleRule
 
-    const [open, setOpen] = useState(false)
-    const [locked, setLocked] = useState(true)
+  switch (boxNumber) {
+    case "10":
+      styleRule = "double-row"
+      break
+    case "28":
+      styleRule = "double-column"
+      break
+    default:
+      styleRule = "box--standard"
+      break
+  }
 
-    switch(content.isBlocked) {
-        // prevent onclick
-    }
-
-    let styleRule
-
-    switch(boxNumber) {
-        case '10':
-            styleRule = "double-row"
-            break
-        case '28':
-            styleRule = "double-column"
-            break
-        default:
-            styleRule = "box--standard"
-            break
-    }
-
-
-    return (
-        <div className={styleRule}>
-        {
-            locked && <div className="box--locked" style={{}} onClick={() =>
-                setLocked(false)}> {content.day}</div>
-        }
-        {
-            !locked && <div className="box--unlocked" style={{}} onClick={() => setOpen(!open)}>{content.contentPreview}</div>
-        }
-        {
-            !locked && open && <div className="box--open-full" style={{}}>{content.contentFull}</div>
-        }
-            
+  return (
+    <div className={styleRule}>
+      {locked && (
+        <div
+          className="box--locked"
+          style={{}}
+          onClick={() => !content.isBlocked && setLocked(false)}
+        >
+          {" "}
+          {content.day}
         </div>
-          
-    )
+      )}
+      {!locked && (
+        <div
+          className="box--unlocked"
+          style={{}}
+          onClick={() => setOpen(!open)}
+        >
+          {content.contentPreview}
+        </div>
+      )}
+
+      <ReactModal
+        closeTimeoutMS={500}
+        isOpen={!locked && open}
+        contentLabel="modal"
+        onRequestClose={() => setOpen(!open)}
+      >
+        {content.contentFull}
+      </ReactModal>
+    </div>
+  )
 }
 
 export default Box
